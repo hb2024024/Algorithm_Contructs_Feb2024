@@ -19,7 +19,7 @@ public class CA_2 {
             System.out.println("2. Check employee list");
             System.out.println("3. Register a patient");
             System.out.println("4. Register an employee");
-            System.out.println("5. Personal activities (to be implemented)");
+            System.out.println("5. Personal activities");
             System.out.println("6. Exit");
 
             int choice = scanner.nextInt();
@@ -40,7 +40,7 @@ public class CA_2 {
                     EmployeeUtils.addNewEmployee(employees, scanner);
                     break;
                 case 5:
-                    System.out.println("Personal activities feature is under construction.");
+                    PersonalActivities.personalActivities(employees, patients, scanner);
                     break;
                 case 6:
                     running = false;
