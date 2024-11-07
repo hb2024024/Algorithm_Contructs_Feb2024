@@ -1,0 +1,50 @@
+1,Venita Aronin,surgery,surgeon
+2,Orv Eve,surgery,doctor
+3,Avis Teodorski,psychiatry,nurse
+4,Rog Armitt,surgery,cleaner
+5,Bellina Roper,emergency room,nurse
+6,Cyndy Fortune,surgery,cleaner
+7,Giffard Duckham,surgery,nurse
+8,Claiborn Whardley,emergency room,cleaner
+9,Vannie Iacovucci,psychiatry,doctor
+10,Jessey Bohea,surgery,nurse
+11,Maible Uc,psychiatry,nurse
+12,Waylen Coyne,surgery,surgeon
+13,Anna Caudelier,emergency room,nurse
+14,Sal Vaadeland,psychiatry,cleaner
+15,Roxanna Baynes,surgery,cleaner
+16,Malva Dowles,emergency room,doctor
+17,Josiah Hasluck,emergency room,cleaner
+18,Sanders Buret,emergency room,nurse
+19,Bertie Izhak,surgery,nurse
+20,Deloria Pinn,surgery,cleaner
+21,Enrichetta Gateman,emergency room,cleaner
+22,Clarissa Overel,emergency room,cleaner
+23,Lesley Servante,surgery,cleaner
+24,Nikki Maliffe,surgery,cleaner
+25,James O'Gaven,surgery,nurse
+26,Milton Couzens,surgery,doctor
+27,Donielle Hasluck,surgery,nurse
+28,Giacinta Hyndes,surgery,doctor
+29,Min Flawn,emergency room,doctor
+30,Katalin MacEllen,emergency room,cleaner
+31,Janet Pohlak,surgery,nurse
+32,Fulvia Shuxsmith,emergency room,nurse
+33,Akim Crasford,psychiatry,doctor
+34,Sharline Thursfield,surgery,nurse
+35,Emlyn McGrah,surgery,cleaner
+36,Sari Dunlap,surgery,surgeon
+37,Murdock Evelyn,psychiatry,cleaner
+38,Sharl Falconbridge,surgery,cleaner
+39,Tadio Blacksell,psychiatry,doctor
+40,Dido Son,emergency room,nurse
+41,Mile Hosburn,emergency room,nurse
+42,Silvan Dowty,psychiatry,cleaner
+43,Barth Fawloe,psychiatry,nurse
+44,Clarine Wooles,psychiatry,doctor
+45,Lenora Bradneck,psychiatry,cleaner
+46,Abdel Perrelle,psychiatry,nurse
+47,Valeria Juste,psychiatry,nurse
+48,Forrester Petrillo,surgery,surgeon
+49,Reginauld McGillicuddy,emergency room,nurse
+50,Francisco Sarney,psychiatry,doctor

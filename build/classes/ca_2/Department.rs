@@ -1,0 +1,5 @@
+ca_2.StaffManager
+ca_2.PsychiatryDepartment
+ca_2.Department
+ca_2.EmergencyRoom
+ca_2.SurgeryDepartment
