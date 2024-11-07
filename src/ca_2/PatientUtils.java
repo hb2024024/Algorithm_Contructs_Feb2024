@@ -14,26 +14,12 @@ public class PatientUtils {
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
-
-        switch (choice) {
-            case 1:
-                quickSortByName(patients, 0, patients.size() - 1);
-                ReadFile.printPatients(patients);
-                break;
-            case 2:
-                quickSortByAdmissionDate(patients, 0, patients.size() - 1);
-                ReadFile.printPatients(patients);
-                break;
-            case 3:
-                quickSortByStatus(patients, 0, patients.size() - 1);
-                ReadFile.printPatients(patients);
-                break;
-            case 4:
-                filterPatientsByStatus(patients, scanner);
-                break;
-            default:
-                System.out.println("Invalid option. Please try again.");
-        }
+        if (choice == 1 || choice == 2 || choice == 3) {
+            quickSort(patients, 0, patients.size() - 1, choice);
+            ReadFile.printPatients(patients);
+        } else if (choice == 4) {
+            filterPatientsByStatus(patients, scanner);
+        } 
     }
 
     private static void filterPatientsByStatus(List<Patient> patients, Scanner scanner) {
@@ -70,12 +56,27 @@ public class PatientUtils {
             if (loopCounter == 50) break;
         }
     }
-
-    private static void quickSortByName(List<Patient> list, int low, int high) {
+    
+    private static void quickSort(List<Patient> list, int low, int high, int choice) {
         if (low < high) {
-            int pi = partitionByName(list, low, high);
-            quickSortByName(list, low, pi - 1);
-            quickSortByName(list, pi + 1, high);
+            int partition = 0;
+            switch (choice) {
+                case 1:
+                    partition = partitionByName(list, low, high);
+                    break;
+                case 2:
+                    partition = partitionByAdmissionDate(list, low, high);
+                    break;
+                case 3:
+                    partition = partitionByStatus(list, low, high);
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        
+            int pi = partition;
+            quickSort(list, low, pi - 1, choice);
+            quickSort(list, pi + 1, high, choice);
         }
     }
 
@@ -92,14 +93,6 @@ public class PatientUtils {
         return i + 1;
     }
 
-    private static void quickSortByAdmissionDate(List<Patient> list, int low, int high) {
-        if (low < high) {
-            int pi = partitionByAdmissionDate(list, low, high);
-            quickSortByAdmissionDate(list, low, pi - 1);
-            quickSortByAdmissionDate(list, pi + 1, high);
-        }
-    }
-
     private static int partitionByAdmissionDate(List<Patient> list, int low, int high) {
         Patient pivot = list.get(high);
         int i = low - 1;
@@ -112,15 +105,7 @@ public class PatientUtils {
         swap(list, i + 1, high);
         return i + 1;
     }
-
-    private static void quickSortByStatus(List<Patient> list, int low, int high) {
-        if (low < high) {
-            int pi = partitionByStatus(list, low, high);
-            quickSortByStatus(list, low, pi - 1);
-            quickSortByStatus(list, pi + 1, high);
-        }
-    }
-
+    
     private static int partitionByStatus(List<Patient> list, int low, int high) {
         Patient pivot = list.get(high);
         int i = low - 1;

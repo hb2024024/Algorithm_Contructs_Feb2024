@@ -16,15 +16,16 @@ public class CA_2 {
         while (running) {
             System.out.println("\nPlease select an option:");
             System.out.println("1. Check patient list");
-            System.out.println("2. Check employee list (to be implemented)");
+            System.out.println("2. Check employee list");
             System.out.println("3. Register a patient");
-            System.out.println("4. Register an employee (to be implemented)");
+            System.out.println("4. Register an employee");
             System.out.println("5. Personal activities (to be implemented)");
             System.out.println("6. Exit");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline character
 
+            
             switch (choice) {
                 case 1:
                     PatientUtils.displayPatientListOptions(patients, scanner);

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeUtils {
-
+    
     public static void displayEmployeeListOptions(List<Employee> employees, Scanner scanner) {
         System.out.println("\nHow would you like to see the employee list?");
         System.out.println("1. Alphabetically by name");
@@ -14,26 +14,14 @@ public class EmployeeUtils {
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
-
-        switch (choice) {
-            case 1:
-                quickSortByName(employees, 0, employees.size() - 1);
-                ReadFile.printEmployees(employees);
-                break;
-            case 2:
-                quickSortByDepartment(employees, 0, employees.size() - 1);
-                ReadFile.printEmployees(employees);
-                break;
-            case 3:
-                quickSortByRole(employees, 0, employees.size() - 1);
-                ReadFile.printEmployees(employees);
-                break;
-            case 4:
-                filterEmployeesByRole(employees, scanner);
-                break;
-            default:
-                System.out.println("Invalid option. Please try again.");
+        if (choice == 1 || choice == 2 || choice == 3) {
+            quickSort(employees, 0, employees.size() - 1, choice);
+            ReadFile.printEmployees(employees);
+        } else if (choice == 4) {
+            filterEmployeesByRole(employees, scanner);
         }
+        
+        
     }
 
     private static void filterEmployeesByRole(List<Employee> employees, Scanner scanner) {
@@ -75,15 +63,30 @@ public class EmployeeUtils {
         }
         
     }
-
-    private static void quickSortByName(List<Employee> list, int low, int high) {
+    private static void quickSort(List<Employee> list, int low, int high, int choice) {
         if (low < high) {
-            int pi = partitionByName(list, low, high);
-            quickSortByName(list, low, pi - 1);
-            quickSortByName(list, pi + 1, high);
+            int partition = 0;
+            switch (choice) {
+                case 1:
+                    partition = partitionByName(list, low, high);
+                    break;
+                case 2:
+                    partition = partitionByDepartment(list, low, high);
+                    break;
+                case 3:
+                    partition = partitionByRole(list, low, high);
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        
+            int pi = partition;
+            quickSort(list, low, pi - 1, choice);
+            quickSort(list, pi + 1, high, choice);
         }
     }
 
+   
     private static int partitionByName(List<Employee> list, int low, int high) {
         Employee pivot = list.get(high);
         int i = (low - 1);
@@ -99,15 +102,7 @@ public class EmployeeUtils {
         return i + 1;
     }
 
-    private static void quickSortByDepartment(List<Employee> list, int low, int high) {
-        if (low < high) {
-            int pi = partitionByDepartment(list, low, high);
-            quickSortByDepartment(list, low, pi - 1);
-            quickSortByDepartment(list, pi + 1, high);
-        }
-    }
-
-    private static int partitionByDepartment(List<Employee> list, int low, int high) {
+   private static int partitionByDepartment(List<Employee> list, int low, int high) {
         Employee pivot = list.get(high);
         int i = (low - 1);
 
@@ -122,20 +117,13 @@ public class EmployeeUtils {
         return i + 1;
     }
 
-    private static void quickSortByRole(List<Employee> list, int low, int high) {
-        if (low < high) {
-            int pi = partitionByRole(list, low, high);
-            quickSortByRole(list, low, pi - 1);
-            quickSortByRole(list, pi + 1, high);
-        }
-    }
 
     private static int partitionByRole(List<Employee> list, int low, int high) {
         Employee pivot = list.get(high);
         int i = (low - 1);
 
         for (int j = low; j < high; j++) {
-            if (list.get(j).getClass().getSimpleName().compareToIgnoreCase(pivot.getClass().getSimpleName()) < 0) {
+            if (list.get(j).getRole().compareToIgnoreCase(pivot.getRole()) < 0) {
                 i++;
                 swap(list, i, j);
             }
@@ -179,7 +167,7 @@ public class EmployeeUtils {
             default: 
                 System.out.println("Invalid Choice.");
         }
-        Employee employee;
+        Employee employee = new Employee(name, 0, department, "");
         
         switch(roleChoice) {
             case 1: 
