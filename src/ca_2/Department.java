@@ -1,44 +1,64 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package ca_2;
+package CA_2;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- *
- * @author Henrique
+ * The Department class represents a department within the hospital.
+ * Each department has a name, a list of employees, and a list of patients.
+ * This class is essential for organizing the hospital's structure, allowing
+ * employees and patients to be grouped by department.
  */
 public class Department {
-    String name;
-    int id;
+    private String name; // The name of the department
+    private List<Employee> employees; // List of employees in the department
+    private List<Patient> patients; // List of patients assigned to the department
 
-    Department(String name, int id) {
+    /**
+     * Constructor for Department.
+     * Initializes a department with the specified name and initializes empty lists
+     * for employees and patients to be added as needed.
+     * 
+     * @param name - the name of the department
+     */
+    public Department(String name) {
         this.name = name;
-        this.id =  id;
+        this.employees = new ArrayList<>();
+        this.patients = new ArrayList<>();
     }
-}
 
-class SurgeryDepartment extends Department {
-    int teamSize;
-    
-    SurgeryDepartment(String name, int id, int teamSize) {
-        super(name, id);
-        this.teamSize = teamSize;
+    // Getter for the department name
+    public String getName() {
+        return name;
     }
-}
 
-class PsychiatryDepartment extends Department {
-    int teamSize;
-    
-    PsychiatryDepartment(String name, int id, int teamSize) {
-        super(name, id);
-        this.teamSize = teamSize;
+    // Getter for the list of employees in this department
+    public List<Employee> getEmployees() {
+        return employees;
     }
-}
 
-class EmergencyRoom extends Department {
-    
-    EmergencyRoom(String name, int id) {
-        super(name, id);
+    // Getter for the list of patients in this department
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    /**
+     * Adds an employee to this department.
+     * This method is used to associate employees with their specific departments.
+     *
+     * @param employee - the employee to add to the department
+     */
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
+    /**
+     * Adds a patient to this department.
+     * This method allows the assignment of patients to a specific department.
+     *
+     * @param patient - the patient to add to the department
+     */
+    public void addPatient(Patient patient) {
+        patients.add(patient);
     }
 }
